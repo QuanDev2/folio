@@ -1,14 +1,14 @@
-interface Photo {
+export interface Photo {
   id: string,
   url: string,
-  alt: string,
-  caption: string,
-  authorId: string,
-  tags: string[]
-  metaData: PhotoMetaData,
+  alt?: string,
+  caption?: string,
+  authorId?: string,
+  tags?: string[]
+  metaData?: PhotoMetaData,
 }
 
-interface PhotoMetaData {
+export interface PhotoMetaData {
   camera?: string,
   lens?: string,
   aperture?: string,
@@ -19,7 +19,7 @@ interface PhotoMetaData {
   dateTaken?: string,
 }
 
-interface User {
+export interface User {
   id: string,
   name: string,
   email: string,
@@ -27,7 +27,7 @@ interface User {
   bio?: string,
 }
 
-interface Post {
+export interface Post {
   id: string,
   title: string,
   slug: string,
