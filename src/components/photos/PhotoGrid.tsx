@@ -1,5 +1,7 @@
 import PhotoCard from './PhotoCard'
 import type { Photo } from '../../types'
+import TagFilter from '../TagFilter'
+import { useState } from 'react'
 
 export default function PhotoGrid() {
   const photos: Photo[] = [
@@ -40,8 +42,18 @@ export default function PhotoGrid() {
       caption: 'Hidden falls deep in the rainforest'
     }
   ]
+  const tags = ['portrait', 'landscape', 'sports', 'street', 'travel']
+
+  // States
+  const [selectedTag, onSelectedTag] = useState('')
+
   return (
     <div>
+      <TagFilter
+        tags={tags}
+        selectedTag={selectedTag}
+        onTagChange={onSelectedTag}
+      ></TagFilter>
       {photos.map((photo) => (
         <PhotoCard key={photo.id} photo={photo}></PhotoCard>
       ))}
