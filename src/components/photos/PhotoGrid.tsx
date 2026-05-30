@@ -1,8 +1,9 @@
 import PhotoCard from './PhotoCard'
 import type { Photo } from '../../types'
-import TagFilter from '../TagFilter'
+import TagFilters from '../TagFilters'
 import { useState } from 'react'
 import photosData from '../../data/photos.json'
+import SearchInput from '../SearchInput'
 
 export default function PhotoGrid() {
   const photos = photosData as Photo[]
@@ -10,19 +11,29 @@ export default function PhotoGrid() {
   console.log(tags)
   // States
   const [selectedTag, setSelectedTag] = useState('All')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const filteredPhotos = photos.filter((photo) => {
-    if (selectedTag === 'All') return true
+    console.log(searchQuery)
+    if (selectedTag === 'All' && searchQuery === '') return true
+  
     return photo.tags?.includes(selectedTag)
+      || photo.caption?.includes(searchQuery)
   })  
 
   return (
     <div>
-      <TagFilter
+      <div id='filters'>
+      <SearchInput
+        searchQuery={searchQuery} 
+        onSearchQueryChange={setSearchQuery}
+        ></SearchInput>
+      <TagFilters
         tags={tags}
         selectedTag={selectedTag}
         onTagChange={setSelectedTag}
-      ></TagFilter>
+          ></TagFilters>
+        </div>
       { filteredPhotos.map((photo) => <PhotoCard key={photo.id} photo={photo}></PhotoCard>
       )}
     </div>

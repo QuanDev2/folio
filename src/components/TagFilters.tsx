@@ -1,14 +1,14 @@
-type TagFilterProps = {
+type TagFiltersProps = {
   tags: string[]
   selectedTag: string
   onTagChange: (tag: string) => void
 }
 
-export default function TagFilter({
+export default function TagFilters({
   tags,
   selectedTag,
   onTagChange,
-}: TagFilterProps) {
+}: TagFiltersProps) {
   return (
     <div>
       {tags.map(tag => (
