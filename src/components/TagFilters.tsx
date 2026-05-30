@@ -10,14 +10,14 @@ export default function TagFilters({
   onTagChange,
 }: TagFiltersProps) {
   return (
-    <div>
+    <div className="flex flex-wrap gap-2">
       {tags.map(tag => (
         <button
           key={tag}
           onClick={() => onTagChange(tag)}
-          className={`rounded-full px-4 py-2 text-sm ${tag === selectedTag 
-            ? 'bg-black text-white' 
-            : 'bg-gray-200 text-black'}`}
+          className={`rounded-full border px-4 py-2 text-sm font-medium transition ${tag === selectedTag 
+            ? 'border-zinc-950 bg-zinc-950 text-white shadow-sm' 
+            : 'border-zinc-200 bg-white text-zinc-700 hover:border-teal-600 hover:text-teal-700'}`}
         >{tag}</button>
       ))}
     </div>

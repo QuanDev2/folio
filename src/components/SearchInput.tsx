@@ -7,18 +7,16 @@ export default function SearchInput({
   searchQuery,
   onSearchQueryChange,
 }: SearchInputProps) {
-  console.log(searchQuery)
-
   return (
-    <div>
-      <label htmlFor="photo-search">Search Caption</label>
+    <div className="flex min-w-0 flex-1 flex-col gap-2">
       <input
         id="photo-search"
-        type="text"
+        type="search"
+        value={searchQuery}
         placeholder="Search by caption"
+        className="h-11 w-full rounded-md border border-zinc-300 bg-white px-3 text-sm text-zinc-950 shadow-sm outline-none transition placeholder:text-zinc-400 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20"
         onChange={(e) => {
-          searchQuery = e.target.value
-          onSearchQueryChange(searchQuery)
+          onSearchQueryChange(e.target.value)
         }}
       ></input>
     </div>
