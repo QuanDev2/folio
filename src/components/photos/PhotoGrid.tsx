@@ -16,7 +16,16 @@ export default function PhotoGrid() {
   // States
   const [selectedTag, setSelectedTag] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
-  const [sortOrder, setSortOrder] = useState('desc')
+  const [sortOrder, setSortOrder] = useState('newest')
+
+  const hasActiveFilters =
+    selectedTag !== 'All' || searchQuery !== '' || sortOrder !== 'newest'
+
+  function handleClearAll() {
+    setSelectedTag('All')
+    setSearchQuery('')
+    setSortOrder('newest')
+  }
 
   const filteredPhotos = photos.filter((photo) => {
     const matchesTag =
@@ -32,7 +41,7 @@ export default function PhotoGrid() {
     const dateA = new Date(a.metaData?.dateTaken ?? '').getTime()
     const dateB = new Date(b.metaData?.dateTaken ?? '').getTime()
 
-    if (sortOrder === 'desc') {
+    if (sortOrder === 'newest') {
       return dateB - dateA
     }
 
@@ -58,6 +67,14 @@ export default function PhotoGrid() {
           sortOrder={sortOrder}
           onSortOrderChange={setSortOrder}
         ></SortDropdown>
+        <button
+          type='button'
+          disabled={!hasActiveFilters}
+          onClick={handleClearAll}
+          className='h-11 rounded-md border border-zinc-300 px-4 text-sm font-medium text-zinc-700 shadow-sm transition hover:border-teal-600 hover:text-teal-700 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 disabled:shadow-none md:w-auto'
+        >
+          Clear all
+        </button>
       </div>
 
       <div className='flex items-center justify-between gap-4'>

@@ -19,8 +19,8 @@ export default function SortDropdown({
             onSortOrderChange(e.target.value)
           }}
         >
-          <option value='desc'>Newest First</option>
-          <option value='asc'>Oldest First</option>
+          <option value='newest'>Newest First</option>
+          <option value='oldest'>Oldest First</option>
         </select>
         <span className='pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-zinc-500'>
           ▼
