@@ -1,0 +1,39 @@
+import type { Post } from '../../types'
+
+interface Props {
+  post: Post
+}
+
+export default function PostCard({ post }: Props) {
+  const coverPhoto = post.photos.find((p) => p.id === post.coverPhotoId)
+
+  const formattedDate = new Intl.DateTimeFormat('en', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date(post.createdOn))
+
+  return (
+    <div className="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      {coverPhoto && (
+        <img
+          src={coverPhoto.url}
+          alt={coverPhoto.alt}
+          className="aspect-[4/3] w-full object-cover"
+        />
+      )}
+      <div className="flex flex-col gap-3 p-4">
+        <div className="text-base font-semibold text-zinc-950">{post.title}</div>
+        <p className="line-clamp-2 text-sm text-zinc-500">{post.bodyText}</p>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+          {post.tags[0] && (
+            <span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-700">
+              {post.tags[0]}
+            </span>
+          )}
+          <span>{formattedDate}</span>
+        </div>
+      </div>
+    </div>
+  )
+}

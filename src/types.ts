@@ -3,8 +3,6 @@ export interface Photo {
   url: string
   alt?: string
   caption?: string
-  authorId?: string
-  tags?: string[]
   metaData?: PhotoMetaData
 }
 
@@ -21,6 +19,7 @@ export interface PhotoMetaData {
 
 export interface User {
   id: string
+  username: string
   name: string
   email: string
   profilePictureUrl?: string
@@ -29,11 +28,12 @@ export interface User {
 
 export interface Post {
   id: string
-  title: string
   slug: string
-  authorId: string
+  title: string
+  bodyText: string
+  authorUsername: string
+  tags: string[]
   published: boolean
-  content: string
   coverPhotoId: string
   photos: Photo[]
   createdOn: string
