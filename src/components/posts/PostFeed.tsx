@@ -1,34 +1,13 @@
-import { useReducer } from 'react'
-import type { Post } from '../../types'
 import postsData from '../../data/posts.json'
 import PostCard from './PostCard'
 import TagFilters from '../TagFilters'
 import SearchInput from '../SearchInput'
 import SortDropdown from '../SortDropdown'
-import { filterReducer, initialState } from './postFilterReducer'
+import usePostFilter from '../../hooks/usePostFilter'
 
 export default function PostFeed() {
-  const posts = postsData as Post[]
-  const [filters, dispatch] = useReducer(filterReducer, initialState)
-
-  const tags = ['All', ...Array.from(new Set(posts.flatMap((p) => p.tags)))]
-  const hasActiveFilters =
-    filters.tag !== 'All' || filters.search !== '' || filters.sort !== 'newest'
-
-  const filteredPosts = posts.filter((post) => {
-    const matchesTag = filters.tag === 'All' || post.tags.includes(filters.tag)
-    const matchesSearch =
-      filters.search === '' ||
-      post.title.toLowerCase().includes(filters.search.toLowerCase()) ||
-      post.bodyText.toLowerCase().includes(filters.search.toLowerCase())
-    return matchesTag && matchesSearch
-  })
-
-  const sortedPosts = [...filteredPosts].sort((a, b) => {
-    const diff =
-      new Date(a.createdOn).getTime() - new Date(b.createdOn).getTime()
-    return filters.sort === 'newest' ? -diff : diff
-  })
+  const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
+    usePostFilter(postsData)
 
   return (
     <div className='flex flex-col gap-6'>
