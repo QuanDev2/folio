@@ -32,8 +32,8 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user } = useCurrentUser()
-  if (!user) return <Navigate to='/login' />
-  return children
+  if (!user) return <Navigate to='/login' replace />
+  return <>{children}</>
 }
 
 function App() {
