@@ -11,7 +11,9 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='min-h-screen bg-zinc-50 text-zinc-950'>
       <nav className='border-b border-zinc-200 bg-white px-6 py-4 flex items-center justify-between'>
-        <span className='font-bold text-teal-700'>Folio</span>
+        <Link to='/' className='font-bold text-teal-700'>
+          Folio
+        </Link>
         {user && (
           <Link
             to='/editor'
