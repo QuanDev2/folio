@@ -12,7 +12,7 @@ const MOCK_USER: User = {
   id: 'user-1',
   username: 'quandev',
   name: 'quan',
-  email: 'contact@folio.dev'
+  email: 'contact@pholio.dev'
 }
 
 export function CurrentUserProvider({

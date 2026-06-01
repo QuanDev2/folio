@@ -1,10 +1,10 @@
-# Folio
+# pholio
 
 > Nope, this wasn't built by AI, in case you're wondering :P
 
 A platform for photographers to host their photos and write about them.
 
-Most photo platforms treat writing as an afterthought. Most writing platforms treat photos as decorations. Folio puts both on equal footing — photographers can build a library of their work, write long-form posts with photos embedded inline, and publish a clean public portfolio.
+Most photo platforms treat writing as an afterthought. Most writing platforms treat photos as decorations. pholio puts both on equal footing — photographers can build a library of their work, write long-form posts with photos embedded inline, and publish a clean public portfolio.
 In other words: a portfolio with stories behind it.
 
 **Live demo:** _coming soon_

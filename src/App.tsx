@@ -12,7 +12,7 @@ function Layout({ children }: { children: React.ReactNode }) {
     <div className='min-h-screen bg-zinc-50 text-zinc-950'>
       <nav className='border-b border-zinc-200 bg-white px-6 py-4 flex items-center justify-between'>
         <Link to='/' className='font-bold text-teal-700'>
-          Folio
+          pholio
         </Link>
         {user && (
           <Link
@@ -45,7 +45,7 @@ function App() {
           element={
             <Layout>
               <div className='flex flex-col items-center gap-6 py-24 text-center'>
-                <h1 className='text-4xl font-bold text-zinc-950'>Folio</h1>
+                <h1 className='text-4xl font-bold text-zinc-950'>pholio</h1>
                 <p className='max-w-md text-zinc-500'>
                   A home for photographers to share their work.
                 </p>
