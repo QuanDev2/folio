@@ -107,9 +107,11 @@ function App() {
         <Route
           path='/editor/:postId'
           element={
-            <Layout>
-              <div>Post editor (stub)</div>
-            </Layout>
+            <ProtectedRoute>
+              <Layout>
+                <div>Post editor (stub)</div>
+              </Layout>
+            </ProtectedRoute>
           }
         />
       </Routes>
