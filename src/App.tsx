@@ -5,25 +5,12 @@ import {
   useCurrentUser
 } from './context/CurrentUserContext'
 import Post from './components/posts/Post'
+import Navbar from './component/Navbar'
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const { user } = useCurrentUser()
-
   return (
     <div className='min-h-screen bg-zinc-50 text-zinc-950'>
-      <nav className='border-b border-zinc-200 bg-white px-4 py-4 flex items-center justify-between sm:px-6'>
-        <Link to='/' className='font-bold text-teal-700'>
-          pholio
-        </Link>
-        {user && (
-          <Link
-            to='/editor'
-            className='rounded-md bg-teal-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-600'
-          >
-            Create Post
-          </Link>
-        )}
-      </nav>
+      <Navbar></Navbar>
       <main className='mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8'>
         {children}
       </main>
@@ -46,7 +33,9 @@ function App() {
           element={
             <Layout>
               <div className='flex flex-col items-center gap-6 py-12 text-center md:py-24'>
-                <h1 className='text-2xl font-bold text-zinc-950 md:text-4xl'>pholio</h1>
+                <h1 className='text-2xl font-bold text-zinc-950 md:text-4xl'>
+                  pholio
+                </h1>
                 <p className='max-w-md text-zinc-500'>
                   A home for photographers to share their work.
                 </p>

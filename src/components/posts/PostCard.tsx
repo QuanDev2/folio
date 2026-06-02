@@ -4,13 +4,6 @@ interface Props {
   post: Post
 }
 
-function slugify(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '')
-}
-
 export default function PostCard({ post }: Props) {
   const coverPhoto =
     post.photos.find((p) => p.id === post.coverPhotoId) ?? post.photos[0]
@@ -23,7 +16,7 @@ export default function PostCard({ post }: Props) {
 
   return (
     <Link
-      to={`/posts/${slugify(post.title)}`}
+      to={`/posts/${post.slug}`}
       className='overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md'
     >
       <img
