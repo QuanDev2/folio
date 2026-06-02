@@ -11,7 +11,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className='min-h-screen bg-zinc-50 text-zinc-950'>
-      <nav className='border-b border-zinc-200 bg-white px-6 py-4 flex items-center justify-between'>
+      <nav className='border-b border-zinc-200 bg-white px-4 py-4 flex items-center justify-between sm:px-6'>
         <Link to='/' className='font-bold text-teal-700'>
           pholio
         </Link>
@@ -45,8 +45,8 @@ function App() {
           path='/'
           element={
             <Layout>
-              <div className='flex flex-col items-center gap-6 py-24 text-center'>
-                <h1 className='text-4xl font-bold text-zinc-950'>pholio</h1>
+              <div className='flex flex-col items-center gap-6 py-12 text-center md:py-24'>
+                <h1 className='text-2xl font-bold text-zinc-950 md:text-4xl'>pholio</h1>
                 <p className='max-w-md text-zinc-500'>
                   A home for photographers to share their work.
                 </p>

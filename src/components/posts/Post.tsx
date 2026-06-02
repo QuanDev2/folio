@@ -29,7 +29,7 @@ export default function Post() {
     <div className='mx-auto max-w-3xl px-4 py-10'>
       <button
         onClick={() => navigate(-1)}
-        className='mb-6 flex cursor-pointer items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-900'
+        className='-mx-1 mb-6 flex cursor-pointer items-center gap-1.5 px-1 py-2 text-sm text-zinc-500 hover:text-zinc-900'
       >
         ← Back
       </button>

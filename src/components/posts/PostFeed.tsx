@@ -33,7 +33,7 @@ export default function PostFeed() {
           type='button'
           disabled={!hasActiveFilters}
           onClick={() => dispatch({ type: 'CLEAR_ALL' })}
-          className='h-11 rounded-md border border-zinc-300 px-4 text-sm font-medium text-zinc-700 shadow-sm transition hover:border-teal-600 hover:text-teal-700 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 disabled:shadow-none md:w-auto'
+          className='h-11 w-full rounded-md border border-zinc-300 px-4 text-sm font-medium text-zinc-700 shadow-sm transition hover:border-teal-600 hover:text-teal-700 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 disabled:shadow-none md:w-auto'
         >
           Clear all
         </button>
