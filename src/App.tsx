@@ -4,6 +4,7 @@ import {
   CurrentUserProvider,
   useCurrentUser
 } from './context/CurrentUserContext'
+import Post from './components/posts/Post'
 
 function Layout({ children }: { children: React.ReactNode }) {
   const { user } = useCurrentUser()
@@ -82,7 +83,7 @@ function App() {
           path='/posts/:slug'
           element={
             <Layout>
-              <div>Single post (stub)</div>
+              <Post />
             </Layout>
           }
         />

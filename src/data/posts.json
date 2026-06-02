@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "slug": "summit-at-golden-hour",
+    "slug": "the-summit-at-golden-hour",
     "title": "The Summit at Golden Hour",
     "bodyText": "We started the ascent at 3am to catch the light. Worth every step.",
     "authorUsername": "quan",
@@ -10,8 +10,16 @@
     "coverPhotoId": "1a",
     "createdOn": "2026-01-14",
     "photos": [
-      { "id": "1a", "url": "https://picsum.photos/seed/mountain/800/600", "alt": "Snow-capped mountain peak at sunrise" },
-      { "id": "1b", "url": "https://picsum.photos/seed/mountain2/800/600", "alt": "Rocky trail leading up the ridge" }
+      {
+        "id": "1a",
+        "url": "https://picsum.photos/seed/mountain/800/600",
+        "alt": "Snow-capped mountain peak at sunrise"
+      },
+      {
+        "id": "1b",
+        "url": "https://picsum.photos/seed/mountain2/800/600",
+        "alt": "Rocky trail leading up the ridge"
+      }
     ]
   },
   {
@@ -25,7 +33,16 @@
     "coverPhotoId": "2a",
     "createdOn": "2025-11-03",
     "photos": [
-      { "id": "2a", "url": "https://picsum.photos/seed/forest/800/600", "alt": "Dense pine forest with morning fog" }
+      {
+        "id": "2a",
+        "url": "https://picsum.photos/seed/forest/800/600",
+        "alt": "Dense pine forest with morning fog"
+      },
+      {
+        "id": "2b",
+        "url": "https://picsum.photos/seed/forest2/800/600",
+        "alt": "Sunlight filtering through tall pine trees"
+      }
     ]
   },
   {
@@ -39,7 +56,16 @@
     "coverPhotoId": "3a",
     "createdOn": "2026-03-21",
     "photos": [
-      { "id": "3a", "url": "https://picsum.photos/seed/ocean/800/600", "alt": "Turquoise ocean waves crashing on shore" }
+      {
+        "id": "3a",
+        "url": "https://picsum.photos/seed/ocean/800/600",
+        "alt": "Turquoise ocean waves crashing on shore"
+      },
+      {
+        "id": "3b",
+        "url": "https://picsum.photos/seed/beach/800/600",
+        "alt": "Empty beach at early morning low light"
+      }
     ]
   },
   {
@@ -53,7 +79,16 @@
     "coverPhotoId": "4a",
     "createdOn": "2025-09-18",
     "photos": [
-      { "id": "4a", "url": "https://picsum.photos/seed/city/800/600", "alt": "City skyline reflected in a river at night" }
+      {
+        "id": "4a",
+        "url": "https://picsum.photos/seed/city/800/600",
+        "alt": "City skyline reflected in a river at night"
+      },
+      {
+        "id": "4b",
+        "url": "https://picsum.photos/seed/city2/800/600",
+        "alt": "Neon signs blurring in a rain-slicked street"
+      }
     ]
   },
   {
@@ -67,7 +102,16 @@
     "coverPhotoId": "5a",
     "createdOn": "2024-07-09",
     "photos": [
-      { "id": "5a", "url": "https://picsum.photos/seed/desert/800/600", "alt": "Red sand dunes stretching to the horizon" }
+      {
+        "id": "5a",
+        "url": "https://picsum.photos/seed/desert/800/600",
+        "alt": "Red sand dunes stretching to the horizon"
+      },
+      {
+        "id": "5b",
+        "url": "https://picsum.photos/seed/desert2/800/600",
+        "alt": "Camel tracks cutting across a flat sand plain"
+      }
     ]
   },
   {
@@ -81,7 +125,16 @@
     "coverPhotoId": "6a",
     "createdOn": "2026-04-02",
     "photos": [
-      { "id": "6a", "url": "https://picsum.photos/seed/waterfall/800/600", "alt": "Tall waterfall cascading into a jungle pool" }
+      {
+        "id": "6a",
+        "url": "https://picsum.photos/seed/waterfall/800/600",
+        "alt": "Tall waterfall cascading into a jungle pool"
+      },
+      {
+        "id": "6b",
+        "url": "https://picsum.photos/seed/jungle/800/600",
+        "alt": "Dense green canopy with shafts of light breaking through"
+      }
     ]
   }
 ]
