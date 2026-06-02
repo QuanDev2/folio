@@ -17,13 +17,18 @@ export default function PostCard({ post }: Props) {
   return (
     <Link
       to={`/posts/${post.slug}`}
-      className='overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md'
+      className='relative overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md'
     >
       <img
         src={coverPhoto.url}
         alt={coverPhoto.alt}
         className='aspect-[4/3] w-full object-cover'
       />
+      {!post.published && (
+        <span className='absolute top-2 left-2 rounded-full bg-zinc-800 px-2.5 py-1 text-xs font-medium text-white'>
+          Draft
+        </span>
+      )}
       <div className='flex flex-col gap-3 p-4'>
         <div className='text-base font-semibold text-zinc-950'>
           {post.title}

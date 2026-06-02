@@ -6,6 +6,7 @@ import {
 } from './context/CurrentUserContext'
 import Post from './components/posts/Post'
 import Navbar from './component/Navbar'
+import Portfolio from './components/Portfolio'
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -63,7 +64,7 @@ function App() {
           path='/user/:username'
           element={
             <Layout>
-              <div>User Portfolio (stub)</div>
+              <Portfolio />
             </Layout>
           }
         ></Route>

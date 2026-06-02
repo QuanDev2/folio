@@ -6,8 +6,9 @@ import SortDropdown from '../SortDropdown'
 import usePostFilter from '../../hooks/usePostFilter'
 
 export default function PostFeed() {
+  const publishedPosts = postsData.filter((post) => post.published)
   const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
-    usePostFilter(postsData)
+    usePostFilter(publishedPosts)
 
   return (
     <div className='flex flex-col gap-6'>

@@ -10,7 +10,7 @@ const CurrentUserContext = createContext<CurrentUserContextValue | null>(null)
 
 const MOCK_USER: User = {
   id: 'user-1',
-  username: 'quandev',
+  username: 'quan',
   name: 'quan',
   email: 'contact@pholio.dev'
 }
