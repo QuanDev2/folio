@@ -1,12 +1,26 @@
-import postsData from '../../data/posts.json'
 import PostCard from './PostCard'
 import TagFilters from '../TagFilters'
 import SearchInput from '../SearchInput'
 import SortDropdown from '../SortDropdown'
 import usePostFilter from '../../hooks/usePostFilter'
+import { useQuery } from '@tanstack/react-query'
+import type { Post } from '../../types'
 
 export default function PostFeed() {
-  const publishedPosts = postsData.filter((post) => post.published)
+  // get postData with useQuery
+  const {
+    data = [],
+    isLoading,
+    isError
+  } = useQuery<Post[]>({
+    queryKey: ['posts'],
+    queryFn: () => fetch('http://localhost:3001/posts').then((r) => r.json())
+  })
+
+  if (isLoading) return <p>beep... bop... page loading...</p>
+  if (isError) return <p>oops.. Something went wrong</p>
+
+  const publishedPosts = data.filter((post) => post.published)
   const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
     usePostFilter(publishedPosts)
 
@@ -26,9 +40,7 @@ export default function PostFeed() {
         />
         <SortDropdown
           sortOrder={filters.sort}
-          onSortOrderChange={(sort) =>
-            dispatch({ type: 'SET_SORT', sort })
-          }
+          onSortOrderChange={(sort) => dispatch({ type: 'SET_SORT', sort })}
         />
         <button
           type='button'
