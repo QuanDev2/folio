@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private career roadmap docs — never commit
+docs/roadmap/
+CLAUDE.md

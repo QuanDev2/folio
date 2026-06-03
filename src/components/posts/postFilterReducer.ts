@@ -1,12 +1,14 @@
+export type SortOrder = 'newest' | 'oldest'
+
 export type FilterState = {
   tag: string
-  sort: 'newest' | 'oldest'
+  sort: SortOrder
   search: string
 }
 
 export type FilterAction =
   | { type: 'SET_TAG'; tag: string }
-  | { type: 'SET_SORT'; sort: 'newest' | 'oldest' }
+  | { type: 'SET_SORT'; sort: SortOrder }
   | { type: 'SET_SEARCH'; search: string }
   | { type: 'CLEAR_ALL' }
 

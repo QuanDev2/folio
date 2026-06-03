@@ -27,7 +27,7 @@ export default function PostFeed() {
         <SortDropdown
           sortOrder={filters.sort}
           onSortOrderChange={(sort) =>
-            dispatch({ type: 'SET_SORT', sort: sort as 'newest' | 'oldest' })
+            dispatch({ type: 'SET_SORT', sort })
           }
         />
         <button
