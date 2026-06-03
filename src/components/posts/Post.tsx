@@ -17,7 +17,6 @@ export default function Post() {
 
   const coverPhoto =
     post.photos.find((p) => p.id === post.coverPhotoId) ?? post.photos[0]
-  const remainingPhotos = post.photos.filter((p) => p.id !== coverPhoto.id)
 
   const formattedDate = new Intl.DateTimeFormat('en', {
     month: 'long',
@@ -62,9 +61,9 @@ export default function Post() {
         </p>
       </div>
 
-      {remainingPhotos.length > 0 && (
+      {post.photos.length > 0 && (
         <div className='mt-10 grid gap-4 sm:grid-cols-2'>
-          {remainingPhotos.map((photo) => (
+          {post.photos.map((photo) => (
             <img
               key={photo.id}
               src={photo.url}
