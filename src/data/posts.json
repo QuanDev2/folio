@@ -13,12 +13,34 @@
       {
         "id": "1a",
         "url": "https://picsum.photos/seed/mountain/800/600",
-        "alt": "Snow-capped mountain peak at sunrise"
+        "alt": "Snow-capped mountain peak at sunrise",
+        "caption": "First light cresting the ridge — we'd been waiting in the cold for 40 minutes.",
+        "metaData": {
+          "camera": "Sony A7R V",
+          "lens": "Sony FE 24-70mm f/2.8 GM II",
+          "aperture": "f/8",
+          "shutterSpeed": "1/200s",
+          "iso": 100,
+          "focalLength": "35mm",
+          "location": "Mount Rainier, Washington, USA",
+          "dateTaken": "2026-01-14"
+        }
       },
       {
         "id": "1b",
         "url": "https://picsum.photos/seed/mountain2/800/600",
-        "alt": "Rocky trail leading up the ridge"
+        "alt": "Rocky trail leading up the ridge",
+        "caption": "The last exposed section before the summit plateau.",
+        "metaData": {
+          "camera": "Sony A7R V",
+          "lens": "Sony FE 16-35mm f/2.8 GM",
+          "aperture": "f/11",
+          "shutterSpeed": "1/500s",
+          "iso": 200,
+          "focalLength": "16mm",
+          "location": "Mount Rainier, Washington, USA",
+          "dateTaken": "2026-01-14"
+        }
       }
     ]
   },
@@ -36,12 +58,34 @@
       {
         "id": "2a",
         "url": "https://picsum.photos/seed/forest/800/600",
-        "alt": "Dense pine forest with morning fog"
+        "alt": "Dense pine forest with morning fog",
+        "caption": "7am. The fog hadn't lifted yet and everything felt muted.",
+        "metaData": {
+          "camera": "Fujifilm X-T5",
+          "lens": "Fujinon XF 56mm f/1.2 R WR",
+          "aperture": "f/1.8",
+          "shutterSpeed": "1/125s",
+          "iso": 640,
+          "focalLength": "56mm",
+          "location": "Gifford Pinchot National Forest, Washington, USA",
+          "dateTaken": "2025-11-03"
+        }
       },
       {
         "id": "2b",
         "url": "https://picsum.photos/seed/forest2/800/600",
-        "alt": "Sunlight filtering through tall pine trees"
+        "alt": "Sunlight filtering through tall pine trees",
+        "caption": "An hour later, shafts of light started breaking through the canopy.",
+        "metaData": {
+          "camera": "Fujifilm X-T5",
+          "lens": "Fujinon XF 18mm f/1.4 R LM WR",
+          "aperture": "f/4",
+          "shutterSpeed": "1/60s",
+          "iso": 320,
+          "focalLength": "18mm",
+          "location": "Gifford Pinchot National Forest, Washington, USA",
+          "dateTaken": "2025-11-03"
+        }
       }
     ]
   },
@@ -59,12 +103,34 @@
       {
         "id": "3a",
         "url": "https://picsum.photos/seed/ocean/800/600",
-        "alt": "Turquoise ocean waves crashing on shore"
+        "alt": "Turquoise ocean waves crashing on shore",
+        "caption": "High tide. The water was further up the sand than I'd ever seen it.",
+        "metaData": {
+          "camera": "Nikon Z8",
+          "lens": "Nikkor Z 24-120mm f/4 S",
+          "aperture": "f/10",
+          "shutterSpeed": "1/800s",
+          "iso": 64,
+          "focalLength": "48mm",
+          "location": "Crescent Beach, British Columbia, Canada",
+          "dateTaken": "2026-03-21"
+        }
       },
       {
         "id": "3b",
         "url": "https://picsum.photos/seed/beach/800/600",
-        "alt": "Empty beach at early morning low light"
+        "alt": "Empty beach at early morning low light",
+        "caption": "30 minutes before sunrise — blue hour on an empty beach.",
+        "metaData": {
+          "camera": "Nikon Z8",
+          "lens": "Nikkor Z 14-24mm f/2.8 S",
+          "aperture": "f/5.6",
+          "shutterSpeed": "1/30s",
+          "iso": 400,
+          "focalLength": "14mm",
+          "location": "Crescent Beach, British Columbia, Canada",
+          "dateTaken": "2026-03-21"
+        }
       }
     ]
   },
@@ -82,12 +148,34 @@
       {
         "id": "4a",
         "url": "https://picsum.photos/seed/city/800/600",
-        "alt": "City skyline reflected in a river at night"
+        "alt": "City skyline reflected in a river at night",
+        "caption": "2am. A completely still river makes for a perfect mirror.",
+        "metaData": {
+          "camera": "Sony A7S III",
+          "lens": "Sony FE 24mm f/1.4 GM",
+          "aperture": "f/2",
+          "shutterSpeed": "8s",
+          "iso": 3200,
+          "focalLength": "24mm",
+          "location": "Chicago, Illinois, USA",
+          "dateTaken": "2025-09-18"
+        }
       },
       {
         "id": "4b",
         "url": "https://picsum.photos/seed/city2/800/600",
-        "alt": "Neon signs blurring in a rain-slicked street"
+        "alt": "Neon signs blurring in a rain-slicked street",
+        "caption": "Light rain had just stopped — the wet asphalt does all the work.",
+        "metaData": {
+          "camera": "Sony A7S III",
+          "lens": "Sony FE 85mm f/1.4 GM",
+          "aperture": "f/1.8",
+          "shutterSpeed": "1/60s",
+          "iso": 6400,
+          "focalLength": "85mm",
+          "location": "Chicago, Illinois, USA",
+          "dateTaken": "2025-09-18"
+        }
       }
     ]
   },
@@ -105,12 +193,34 @@
       {
         "id": "5a",
         "url": "https://picsum.photos/seed/desert/800/600",
-        "alt": "Red sand dunes stretching to the horizon"
+        "alt": "Red sand dunes stretching to the horizon",
+        "caption": "Midday in the Sahara. The light was brutal and absolutely flat.",
+        "metaData": {
+          "camera": "Canon EOS R5",
+          "lens": "Canon RF 70-200mm f/2.8L IS USM",
+          "aperture": "f/16",
+          "shutterSpeed": "1/1000s",
+          "iso": 100,
+          "focalLength": "135mm",
+          "location": "Erg Chebbi, Merzouga, Morocco",
+          "dateTaken": "2024-07-09"
+        }
       },
       {
         "id": "5b",
         "url": "https://picsum.photos/seed/desert2/800/600",
-        "alt": "Camel tracks cutting across a flat sand plain"
+        "alt": "Camel tracks cutting across a flat sand plain",
+        "caption": "The tracks were from that morning's caravan — wind would erase them by afternoon.",
+        "metaData": {
+          "camera": "Canon EOS R5",
+          "lens": "Canon RF 15-35mm f/2.8L IS USM",
+          "aperture": "f/11",
+          "shutterSpeed": "1/640s",
+          "iso": 100,
+          "focalLength": "24mm",
+          "location": "Erg Chebbi, Merzouga, Morocco",
+          "dateTaken": "2024-07-09"
+        }
       }
     ]
   },
@@ -128,12 +238,34 @@
       {
         "id": "6a",
         "url": "https://picsum.photos/seed/waterfall/800/600",
-        "alt": "Tall waterfall cascading into a jungle pool"
+        "alt": "Tall waterfall cascading into a jungle pool",
+        "caption": "Had to use a 3-stop ND to get the silky water effect in full daylight.",
+        "metaData": {
+          "camera": "Fujifilm GFX 100S",
+          "lens": "Fujinon GF 23mm f/4 R LM WR",
+          "aperture": "f/22",
+          "shutterSpeed": "2s",
+          "iso": 100,
+          "focalLength": "23mm",
+          "location": "Olympic National Park, Washington, USA",
+          "dateTaken": "2026-04-02"
+        }
       },
       {
         "id": "6b",
         "url": "https://picsum.photos/seed/jungle/800/600",
-        "alt": "Dense green canopy with shafts of light breaking through"
+        "alt": "Dense green canopy with shafts of light breaking through",
+        "caption": "The canopy was so thick it took until noon for any light to reach the forest floor.",
+        "metaData": {
+          "camera": "Fujifilm GFX 100S",
+          "lens": "Fujinon GF 110mm f/2 R LM WR",
+          "aperture": "f/2.8",
+          "shutterSpeed": "1/250s",
+          "iso": 800,
+          "focalLength": "110mm",
+          "location": "Olympic National Park, Washington, USA",
+          "dateTaken": "2026-04-02"
+        }
       }
     ]
   }
