@@ -9,7 +9,7 @@ interface Props {
   onClose: () => void
   onNext: () => void
   onPrev: () => void
-  triggerRef: RefObject<HTMLButtonElement>
+  triggerRef: RefObject<HTMLButtonElement | null>
 }
 
 export default function Lightbox({
