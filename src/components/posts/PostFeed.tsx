@@ -3,26 +3,57 @@ import TagFilters from '../TagFilters'
 import SearchInput from '../SearchInput'
 import SortDropdown from '../SortDropdown'
 import usePostFilter from '../../hooks/usePostFilter'
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 import type { Post } from '../../types'
+import { useEffect, useRef } from 'react'
 
 export default function PostFeed() {
-  // get postData with useQuery
+  const PAGE_LIMIT = 12
+  // infinite scroll
   const {
-    data = [],
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
     isLoading,
     isError
-  } = useQuery<Post[]>({
+  } = useInfiniteQuery({
     queryKey: ['posts'],
-    queryFn: () => fetch('http://localhost:3001/posts').then((r) => r.json())
+    queryFn: ({ pageParam }) =>
+      fetch(
+        `http://localhost:3001/posts?_page=${pageParam}&_per_page=${PAGE_LIMIT}`
+      ).then((r) => r.json()),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.length == PAGE_LIMIT ? allPages.length + 1 : undefined
+    }
   })
+
+  const sentinelRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && hasNextPage) {
+        fetchNextPage()
+      }
+    })
+
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [hasNextPage, fetchNextPage])
+
+  console.log(data)
+  const posts: Post[] = data?.pages.flat() ?? []
+
+  const publishedPosts = posts.filter((post) => post.published)
+  const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
+    usePostFilter(publishedPosts)
 
   if (isLoading) return <p>beep... bop... page loading...</p>
   if (isError) return <p>oops.. Something went wrong</p>
-
-  const publishedPosts = data.filter((post) => post.published)
-  const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
-    usePostFilter(publishedPosts)
 
   return (
     <div className='flex flex-col gap-6'>
@@ -63,6 +94,8 @@ export default function PostFeed() {
           <PostCard key={post.id} post={post} />
         ))}
       </div>
+      <div ref={sentinelRef} />
+      {isFetchingNextPage && <p>Hang in there.. loading more...</p>}
     </div>
   )
 }
