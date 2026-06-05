@@ -24,14 +24,15 @@ export default function PostFeed() {
         `http://localhost:3001/posts?_page=${pageParam}&_per_page=${PAGE_LIMIT}`
       ).then((r) => r.json()),
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) => {
-      return lastPage.length == PAGE_LIMIT ? allPages.length + 1 : undefined
+    getNextPageParam: (lastPage) => {
+      return lastPage.next ?? undefined
     }
   })
 
   const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    console.log('Use effect')
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && hasNextPage) {
         fetchNextPage()
@@ -39,14 +40,14 @@ export default function PostFeed() {
     })
 
     if (sentinelRef.current) {
+      console.log('start observing')
       observer.observe(sentinelRef.current)
     }
 
     return () => observer.disconnect()
   }, [hasNextPage, fetchNextPage])
 
-  console.log(data)
-  const posts: Post[] = data?.pages.flat() ?? []
+  const posts: Post[] = data?.pages.flatMap((page) => page.data) ?? []
 
   const publishedPosts = posts.filter((post) => post.published)
   const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
