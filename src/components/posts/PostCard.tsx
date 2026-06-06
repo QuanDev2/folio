@@ -7,7 +7,6 @@ interface Props {
 }
 
 const PostCard = memo(function PostCard({ post }: Props) {
-  console.log('postcard')
   const coverPhoto =
     post.photos.find((p) => p.id === post.coverPhotoId) ?? post.photos[0]
 
