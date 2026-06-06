@@ -5,7 +5,8 @@ import SortDropdown from '../SortDropdown'
 import usePostFilter from '../../hooks/usePostFilter'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import type { Post } from '../../types'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
+import type { SortOrder } from './postFilterReducer'
 
 export default function PostFeed() {
   const PAGE_LIMIT = 12
@@ -51,6 +52,27 @@ export default function PostFeed() {
   const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
     usePostFilter(publishedPosts)
 
+  // Memoize cb functions for filters
+  const handleSearchChange = useCallback(
+    (search: string) => dispatch({ type: 'SET_SEARCH', search }),
+    [dispatch]
+  )
+
+  const handleTagChange = useCallback(
+    (tag: string) => dispatch({ type: 'SET_TAG', tag }),
+    [dispatch]
+  )
+
+  const handleSortChange = useCallback(
+    (sort: SortOrder) => dispatch({ type: 'SET_SORT', sort }),
+    [dispatch]
+  )
+
+  const handleClearAll = useCallback(
+    () => dispatch({ type: 'CLEAR_ALL' }),
+    [dispatch]
+  )
+
   if (isLoading) return <p>beep... bop... page loading...</p>
   if (isError) return <p>oops.. Something went wrong</p>
 
@@ -59,23 +81,21 @@ export default function PostFeed() {
       <div className='flex flex-col gap-4 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm md:flex-row md:items-end md:justify-between'>
         <SearchInput
           searchQuery={filters.search}
-          onSearchQueryChange={(search) =>
-            dispatch({ type: 'SET_SEARCH', search })
-          }
+          onSearchQueryChange={handleSearchChange}
         />
         <TagFilters
           tags={tags}
           selectedTag={filters.tag}
-          onTagChange={(tag) => dispatch({ type: 'SET_TAG', tag })}
+          onTagChange={handleTagChange}
         />
         <SortDropdown
           sortOrder={filters.sort}
-          onSortOrderChange={(sort) => dispatch({ type: 'SET_SORT', sort })}
+          onSortOrderChange={handleSortChange}
         />
         <button
           type='button'
           disabled={!hasActiveFilters}
-          onClick={() => dispatch({ type: 'CLEAR_ALL' })}
+          onClick={handleClearAll}
           className='h-11 w-full rounded-md border border-zinc-300 px-4 text-sm font-medium text-zinc-700 shadow-sm transition hover:border-teal-600 hover:text-teal-700 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 disabled:shadow-none md:w-auto'
         >
           Clear all
