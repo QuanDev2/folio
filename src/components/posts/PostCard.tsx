@@ -1,10 +1,12 @@
 import type { Post } from '../../types'
 import { Link } from 'react-router-dom'
+import { memo } from 'react'
+
 interface Props {
   post: Post
 }
 
-export default function PostCard({ post }: Props) {
+const PostCard = memo(function PostCard({ post }: Props) {
   const coverPhoto =
     post.photos.find((p) => p.id === post.coverPhotoId) ?? post.photos[0]
 
@@ -45,4 +47,6 @@ export default function PostCard({ post }: Props) {
       </div>
     </Link>
   )
-}
+})
+
+export default PostCard

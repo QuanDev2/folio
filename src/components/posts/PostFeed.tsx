@@ -28,7 +28,7 @@ export default function PostFeed() {
       return lastPage.next ?? undefined
     }
   })
-
+  console.log('rendering post feed')
   const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
