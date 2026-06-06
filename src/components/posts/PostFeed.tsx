@@ -5,7 +5,7 @@ import SortDropdown from '../SortDropdown'
 import usePostFilter from '../../hooks/usePostFilter'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import type { Post } from '../../types'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import type { SortOrder } from './postFilterReducer'
 
 export default function PostFeed() {
@@ -46,9 +46,16 @@ export default function PostFeed() {
     return () => observer.disconnect()
   }, [hasNextPage, fetchNextPage])
 
-  const posts: Post[] = data?.pages.flatMap((page) => page.data) ?? []
+  const posts: Post[] = useMemo(
+    () => data?.pages.flatMap((page) => page.data) ?? [],
+    [data]
+  )
 
-  const publishedPosts = posts.filter((post) => post.published)
+  const publishedPosts = useMemo(
+    () => posts.filter((post) => post.published),
+    [posts]
+  )
+
   const { filters, tags, hasActiveFilters, sortedPosts, dispatch } =
     usePostFilter(publishedPosts)
 
