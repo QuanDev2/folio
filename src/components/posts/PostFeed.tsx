@@ -32,7 +32,6 @@ export default function PostFeed() {
   const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    console.log('Use effect')
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && hasNextPage) {
         fetchNextPage()
@@ -40,7 +39,6 @@ export default function PostFeed() {
     })
 
     if (sentinelRef.current) {
-      console.log('start observing')
       observer.observe(sentinelRef.current)
     }
 
