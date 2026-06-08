@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useRef } from 'react'
-import postsData from '../../data/posts.json'
 import type { Photo, Post } from '../../types'
 import Lightbox from './Lightbox'
+import { useQuery } from '@tanstack/react-query'
 
 export default function Post() {
   const { slug } = useParams()
@@ -11,9 +11,27 @@ export default function Post() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const photoRef = useRef<HTMLButtonElement>(null)
 
-  const post = postsData.find((x) => x.slug === slug) as Post | undefined
+  // useQuery
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['posts', slug],
+    queryFn: () =>
+      fetch(`http://localhost:3001/posts?slug=${slug}`).then((r) =>
+        (r.json() as Promise<Post[]>).then((posts: Post[]) => posts[0])
+      ),
+    select: (post) => {
+      const formattedDate = new Intl.DateTimeFormat('en', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      }).format(new Date(post.createdOn))
+      return { ...post, createdOn: formattedDate }
+    },
+    staleTime: 60000
+  })
 
-  if (!post) {
+  if (isLoading) return <p>Loading...</p>
+
+  if (isError || !data) {
     return (
       <div className='flex min-h-[60vh] items-center justify-center text-zinc-400'>
         Post not found.
@@ -22,20 +40,14 @@ export default function Post() {
   }
 
   const coverPhoto =
-    post.photos.find((p) => p.id === post.coverPhotoId) ?? post.photos[0]
-
-  const formattedDate = new Intl.DateTimeFormat('en', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  }).format(new Date(post.createdOn))
+    data.photos.find((p) => p.id === data.coverPhotoId) ?? data.photos[0]
 
   const handlePhotoBtnOnClick = (
     photo: Photo,
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
     setIsLightboxOpen(true)
-    setLightboxIdx(post.photos.indexOf(photo))
+    setLightboxIdx(data.photos.indexOf(photo))
     photoRef.current = e.currentTarget
   }
 
@@ -56,13 +68,13 @@ export default function Post() {
         />
 
         <div className='mt-6'>
-          <h1 className='text-2xl font-bold text-zinc-950'>{post.title}</h1>
+          <h1 className='text-2xl font-bold text-zinc-950'>{data.title}</h1>
 
           <div className='mt-3 flex flex-wrap items-center gap-3 text-sm text-zinc-500'>
-            <span>@{post.authorUsername}</span>
+            <span>@{data.authorUsername}</span>
             <span>·</span>
-            <span>{formattedDate}</span>
-            {post.tags.map((tag) => (
+            <span>{data.createdOn}</span>
+            {data.tags.map((tag) => (
               <span
                 key={tag}
                 className='rounded-full bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700'
@@ -73,13 +85,13 @@ export default function Post() {
           </div>
 
           <p className='mt-6 text-base leading-relaxed text-zinc-700'>
-            {post.bodyText}
+            {data.bodyText}
           </p>
         </div>
 
-        {post.photos.length > 0 && (
+        {data.photos.length > 0 && (
           <div className='mt-10 grid gap-4 sm:grid-cols-2'>
-            {post.photos.map((photo) => (
+            {data.photos.map((photo) => (
               <button
                 key={photo.id}
                 onClick={(e) => handlePhotoBtnOnClick(photo, e)}
@@ -96,10 +108,10 @@ export default function Post() {
       </div>
       {isLightboxOpen && (
         <Lightbox
-          photos={post.photos}
+          photos={data.photos}
           currIdx={lightboxIdx}
           onNext={() =>
-            setLightboxIdx(Math.min(lightboxIdx + 1, post.photos.length - 1))
+            setLightboxIdx(Math.min(lightboxIdx + 1, data.photos.length - 1))
           }
           onPrev={() => setLightboxIdx(Math.max(lightboxIdx - 1, 0))}
           onClose={() => setIsLightboxOpen(false)}
