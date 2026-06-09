@@ -10,12 +10,6 @@ const PostCard = memo(function PostCard({ post }: Props) {
   const coverPhoto =
     post.photos.find((p) => p.id === post.coverPhotoId) ?? post.photos[0]
 
-  const formattedDate = new Intl.DateTimeFormat('en', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  }).format(new Date(post.createdOn))
-
   return (
     <Link
       to={`/posts/${post.slug}`}
@@ -42,7 +36,7 @@ const PostCard = memo(function PostCard({ post }: Props) {
               {post.tags[0]}
             </span>
           )}
-          <span>{formattedDate}</span>
+          <span>{post.createdOn}</span>
         </div>
       </div>
     </Link>

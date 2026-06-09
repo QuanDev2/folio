@@ -27,6 +27,23 @@ export default function PostFeed() {
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       return lastPage.next ?? undefined
+    },
+    staleTime: 60000,
+    select: (infiniteData) => {
+      return {
+        ...infiniteData,
+        pages: infiniteData.pages.map((page) => ({
+          ...page,
+          data: page.data.map((post: Post) => {
+            const formattedDate = new Intl.DateTimeFormat('en', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            }).format(new Date(post.createdOn))
+            return { ...post, createdOn: formattedDate }
+          })
+        }))
+      }
     }
   })
   const sentinelRef = useRef<HTMLDivElement>(null)
