@@ -3,10 +3,20 @@ import TagFilters from '../TagFilters'
 import SearchInput from '../SearchInput'
 import SortDropdown from '../SortDropdown'
 import usePostFilter from '../../hooks/usePostFilter'
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, type InfiniteData } from '@tanstack/react-query'
 import type { Post } from '../../types'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import type { SortOrder } from './postFilterReducer'
+
+interface PostsPageResponse {
+  data: Post[]
+  first: number
+  prev: number | null
+  next: number | null
+  last: number
+  pages: number
+  items: number
+}
 
 export default function PostFeed() {
   const PAGE_LIMIT = 12
@@ -18,7 +28,7 @@ export default function PostFeed() {
     isFetchingNextPage,
     isLoading,
     isError
-  } = useInfiniteQuery({
+  } = useInfiniteQuery<PostsPageResponse>({
     queryKey: ['posts'],
     queryFn: ({ pageParam }) =>
       fetch(
@@ -29,7 +39,7 @@ export default function PostFeed() {
       return lastPage.next ?? undefined
     },
     staleTime: 60000,
-    select: (infiniteData) => {
+    select: (infiniteData: InfiniteData<PostsPageResponse>) => {
       return {
         ...infiniteData,
         pages: infiniteData.pages.map((page) => ({

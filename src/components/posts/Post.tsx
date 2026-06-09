@@ -12,7 +12,7 @@ export default function Post() {
   const photoRef = useRef<HTMLButtonElement>(null)
 
   // useQuery
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<Post>({
     queryKey: ['posts', slug],
     queryFn: () =>
       fetch(`http://localhost:3001/posts?slug=${slug}`).then((r) =>

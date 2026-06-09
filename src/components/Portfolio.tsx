@@ -9,7 +9,7 @@ export default function Portfolio() {
   const { user: loggedInUser } = useCurrentUser()
   const isOwner = paramUsername === loggedInUser?.username
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<Post[]>({
     queryKey: ['posts', 'user', paramUsername],
     queryFn: () =>
       fetch(`http://localhost:3001/posts?authorUsername=${paramUsername}`).then(
