@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: pholio-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: pholio
+      POSTGRES_PASSWORD: pholio_dev
+      POSTGRES_DB: pholio
+    ports:
+      - "5432:5432"
+    volumes:
+      - pholio_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pholio -d pholio"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pholio_pgdata:
