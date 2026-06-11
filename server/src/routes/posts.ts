@@ -1,0 +1,90 @@
+import { Router } from 'express'
+import { asyncHandler } from '../middleware/asyncHandler'
+
+// Mounted at /posts in app.ts — paths here are RELATIVE to that prefix.
+const router = Router()
+
+// --- Post reads (public) ---
+
+// GET /posts → the /explore world feed (published posts of all users)
+router.get(
+  '/',
+  asyncHandler(async (_req, res) => {
+    res.json({ data: [], message: 'explore feed stub' })
+  }),
+)
+
+// GET /posts/mine → caller's own posts incl. drafts.
+// MUST be registered before '/:slug', else 'mine' matches the :slug param.
+// Stubbed public for now; locked to the authenticated author in Week 4 Day 3.
+router.get(
+  '/mine',
+  asyncHandler(async (_req, res) => {
+    res.json({ data: [], message: 'my posts stub (auth lands Week 4)' })
+  }),
+)
+
+// GET /posts/:slug → single post with photos + tags + author
+router.get(
+  '/:slug',
+  asyncHandler(async (req, res) => {
+    res.json({ message: 'single post stub', slug: req.params.slug })
+  }),
+)
+
+// --- Post writes ---
+
+router.post(
+  '/',
+  asyncHandler(async (_req, res) => {
+    res.status(201).json({ message: 'create post stub' })
+  }),
+)
+
+router.patch(
+  '/:id',
+  asyncHandler(async (req, res) => {
+    res.json({ message: 'update post stub', id: req.params.id })
+  }),
+)
+
+router.delete(
+  '/:id',
+  asyncHandler(async (req, res) => {
+    res.json({ message: 'delete post stub', id: req.params.id })
+  }),
+)
+
+// --- Nested photo writes (real S3-backed logic in Week 5) ---
+// A photo is always addressed through its parent post: Photo.postId is required.
+
+router.post(
+  '/:id/photos',
+  asyncHandler(async (req, res) => {
+    res.status(201).json({ message: 'add photo stub', postId: req.params.id })
+  }),
+)
+
+router.patch(
+  '/:id/photos/:photoId',
+  asyncHandler(async (req, res) => {
+    res.json({
+      message: 'update photo stub',
+      postId: req.params.id,
+      photoId: req.params.photoId,
+    })
+  }),
+)
+
+router.delete(
+  '/:id/photos/:photoId',
+  asyncHandler(async (req, res) => {
+    res.json({
+      message: 'delete photo stub',
+      postId: req.params.id,
+      photoId: req.params.photoId,
+    })
+  }),
+)
+
+export default router
