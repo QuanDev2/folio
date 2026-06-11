@@ -1,4 +1,4 @@
-# File Index — generated 2026-06-10
+# File Index — generated 2026-06-11
 
 ### src/
 - `App.tsx` — App (default)

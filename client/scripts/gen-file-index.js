@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const ROOT = path.join(__dirname, '..')
 const SRC_DIR = path.join(ROOT, 'src')
-const OUTPUT_FILE = path.join(ROOT, 'docs', 'FILE_INDEX.md')
+const OUTPUT_FILE = path.join(ROOT, '..', 'docs', 'FILE_INDEX.md')
 
 function walk(dir) {
   const results = []
